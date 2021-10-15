@@ -6,5 +6,5 @@ Using Pug + TypeScript + SCSS templates for coding LP sites.
 
 ```bach
 $ yarn install
-$ yarn dev:server
+$ yarn dev
 ```

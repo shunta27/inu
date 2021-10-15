@@ -6,8 +6,7 @@
   "author": "ichikawa shunta <shunta27ichikawa@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev:server": "webpack-dev-server",
-    "dev": "webpack --mode development",
+    "dev": "webpack-dev-server",
     "build": "webpack --mode production",
     "watch": "webpack  --mode development --watch"
   },

@@ -90,11 +90,7 @@ module.exports = {
       filename: 'css/style.css'
     }),
     new CopyPlugin({
-      patterns: [
-        { from: 'src/img', to: 'img' }
-        // { from: "./src/favicon.png", to: "favicon.png" },
-        // { from: "./src/favicon.svg", to: "favicon.svg" }
-      ]
+      patterns: [{ from: 'src/img', to: 'img' }]
     }),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
