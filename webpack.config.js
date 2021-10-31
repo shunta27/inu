@@ -1,8 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-// const ImageminPlugin = require('imagemin-webpack-plugin').default;
-// const ImageminMozjpeg = require('imagemin-mozjpeg');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageminMozjpeg = require('imagemin-mozjpeg');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -87,24 +87,25 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: 'src/img', to: 'img' }]
     }),
-    // new ImageminPlugin({
-    //   test: /\.(jpe?g|png|gif|svg)$/i,
-    //   pngquant: {
-    //     quality: '70-80'
-    //   },
-    //   gifsicle: {
-    //     interlaced: false,
-    //     optimizationLevel: 10,
-    //     colors: 256
-    //   },
-    //   svgo: {},
-    //   plugins: [
-    //     ImageminMozjpeg({
-    //       quality: 85,
-    //       progressive: true
-    //     })
-    //   ]
-    // }),
+    new ImageminPlugin({
+      disable: process.env.NODE_ENV !== 'production',
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      pngquant: {
+        quality: '70-80'
+      },
+      gifsicle: {
+        interlaced: false,
+        optimizationLevel: 10,
+        colors: 256
+      },
+      svgo: {},
+      plugins: [
+        ImageminMozjpeg({
+          quality: 85,
+          progressive: true
+        })
+      ]
+    }),
     new HtmlWebpackPlugin({
       template: './src/pug/index.pug',
       filename: 'index.html',
