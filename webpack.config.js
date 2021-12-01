@@ -77,7 +77,11 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist')
+    contentBase: path.resolve(__dirname, 'dist'),
+    host: '0.0.0.0',
+    port: 8080,
+    useLocalIp: true,
+    disableHostCheck: true
   },
   plugins: [
     new CleanWebpackPlugin({ verbose: true }),
